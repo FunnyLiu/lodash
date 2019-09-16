@@ -31,6 +31,7 @@ function chunk(array, size, guard) {
   if ((guard ? isIterateeCall(array, size, guard) : size === undefined)) {
     size = 1;
   } else {
+    //取整
     size = nativeMax(toInteger(size), 0);
   }
   var length = array == null ? 0 : array.length;
@@ -42,6 +43,7 @@ function chunk(array, size, guard) {
       result = Array(nativeCeil(length / size));
 
   while (index < length) {
+    // 调用slice，切数组
     result[resIndex++] = baseSlice(array, index, (index += size));
   }
   return result;

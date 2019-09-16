@@ -25,11 +25,13 @@ var asyncTag = '[object AsyncFunction]',
  * // => false
  */
 function isFunction(value) {
+  //首先判断函数的typeof是否为object
   if (!isObject(value)) {
     return false;
   }
   // The use of `Object#toString` avoids issues with the `typeof` operator
   // in Safari 9 which returns 'object' for typed arrays and other constructors.
+  // 拿到object.toString的返回值
   var tag = baseGetTag(value);
   return tag == funcTag || tag == genTag || tag == asyncTag || tag == proxyTag;
 }

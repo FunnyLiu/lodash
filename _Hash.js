@@ -14,8 +14,9 @@ var hashClear = require('./_hashClear'),
 function Hash(entries) {
   var index = -1,
       length = entries == null ? 0 : entries.length;
-
+  // 初始化清空
   this.clear();
+  // 逐一赋值
   while (++index < length) {
     var entry = entries[index];
     this.set(entry[0], entry[1]);

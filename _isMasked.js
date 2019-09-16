@@ -13,6 +13,7 @@ var maskSrcKey = (function() {
  * @param {Function} func The function to check.
  * @returns {boolean} Returns `true` if `func` is masked, else `false`.
  */
+// 判断函数是否被标记了，标记来自_coreJsData
 function isMasked(func) {
   return !!maskSrcKey && (maskSrcKey in func);
 }

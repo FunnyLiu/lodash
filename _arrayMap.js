@@ -7,6 +7,7 @@
  * @param {Function} iteratee The function invoked per iteration.
  * @returns {Array} Returns the new mapped array.
  */
+//通过自定义iteratee遍历array
 function arrayMap(array, iteratee) {
   var index = -1,
       length = array == null ? 0 : array.length,

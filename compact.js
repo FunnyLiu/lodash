@@ -21,6 +21,8 @@ function compact(array) {
 
   while (++index < length) {
     var value = array[index];
+    //过滤掉所有不为truthy的数组元素
+    //通过原生的if隐身转换来判断
     if (value) {
       result[resIndex++] = value;
     }

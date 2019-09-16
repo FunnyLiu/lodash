@@ -13,7 +13,9 @@ var baseFindIndex = require('./_baseFindIndex'),
  */
 function baseIndexOf(array, value, fromIndex) {
   return value === value
+    //普通情况，遍历通过===判断索引
     ? strictIndexOf(array, value, fromIndex)
+    //如果value是NaN，使用baseIsNaN作为自定义查询函数来baseFindIndex查找
     : baseFindIndex(array, baseIsNaN, fromIndex);
 }
 

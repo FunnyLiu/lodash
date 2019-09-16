@@ -6,6 +6,7 @@
  * @param {Array} values The values to append.
  * @returns {Array} Returns `array`.
  */
+// 将内容列表push到数组后
 function arrayPush(array, values) {
   var index = -1,
       length = values.length,

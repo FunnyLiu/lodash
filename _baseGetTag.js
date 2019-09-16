@@ -7,6 +7,7 @@ var nullTag = '[object Null]',
     undefinedTag = '[object Undefined]';
 
 /** Built-in value references. */
+//取Symbol的方法
 var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
 
 /**
@@ -17,9 +18,11 @@ var symToStringTag = Symbol ? Symbol.toStringTag : undefined;
  * @returns {string} Returns the `toStringTag`.
  */
 function baseGetTag(value) {
+  //首先区分null和undefined
   if (value == null) {
     return value === undefined ? undefinedTag : nullTag;
   }
+  // 通过object.toString判断
   return (symToStringTag && symToStringTag in Object(value))
     ? getRawTag(value)
     : objectToString(value);

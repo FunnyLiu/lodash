@@ -31,7 +31,9 @@ function toFinite(value) {
   if (!value) {
     return value === 0 ? value : 0;
   }
+  //转数字
   value = toNumber(value);
+  //兼容最大数最小数为有限值
   if (value === INFINITY || value === -INFINITY) {
     var sign = (value < 0 ? -1 : 1);
     return sign * MAX_INTEGER;

@@ -27,6 +27,7 @@ var isFunction = require('./isFunction'),
  * // => false
  */
 function isArrayLike(value) {
+  //判断其length属性是否合法，且其不是一个函数类型
   return value != null && isLength(value.length) && !isFunction(value);
 }
 

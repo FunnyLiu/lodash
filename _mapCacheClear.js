@@ -9,6 +9,7 @@ var Hash = require('./_Hash'),
  * @name clear
  * @memberOf MapCache
  */
+// 设置多种不同cache
 function mapCacheClear() {
   this.size = 0;
   this.__data__ = {

@@ -15,6 +15,7 @@ var nativeObjectToString = objectProto.toString;
  * @param {*} value The value to convert.
  * @returns {string} Returns the converted string.
  */
+//包装object.toString
 function objectToString(value) {
   return nativeObjectToString.call(value);
 }

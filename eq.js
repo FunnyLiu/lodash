@@ -30,7 +30,9 @@
  * _.eq(NaN, NaN);
  * // => true
  */
+//判断是否相关
 function eq(value, other) {
+  //兼容NaN===NaN
   return value === other || (value !== value && other !== other);
 }
 

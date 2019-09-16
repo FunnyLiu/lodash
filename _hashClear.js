@@ -8,6 +8,7 @@ var nativeCreate = require('./_nativeCreate');
  * @memberOf Hash
  */
 function hashClear() {
+  //清空初始化hash
   this.__data__ = nativeCreate ? nativeCreate(null) : {};
   this.size = 0;
 }

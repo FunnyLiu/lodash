@@ -7,6 +7,7 @@
  * @param {number} [end=array.length] The end position.
  * @returns {Array} Returns the slice of `array`.
  */
+// 类似slice，但是数组是入参而不是自调用
 function baseSlice(array, start, end) {
   var index = -1,
       length = array.length;

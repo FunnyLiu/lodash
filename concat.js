@@ -37,6 +37,7 @@ function concat() {
   while (index--) {
     args[index - 1] = arguments[index];
   }
+  // 如果是数组则拷贝数组，否则直接组成数组。将参数扁平后拼接到原数组
   return arrayPush(isArray(array) ? copyArray(array) : [array], baseFlatten(args, 1));
 }
 

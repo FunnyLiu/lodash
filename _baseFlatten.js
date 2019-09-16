@@ -21,11 +21,14 @@ function baseFlatten(array, depth, predicate, isStrict, result) {
 
   while (++index < length) {
     var value = array[index];
+    //判断是否可展开
     if (depth > 0 && predicate(value)) {
       if (depth > 1) {
+        // 递归展开
         // Recursively flatten arrays (susceptible to call stack limits).
         baseFlatten(value, depth - 1, predicate, isStrict, result);
       } else {
+        // 将值push到result里
         arrayPush(result, value);
       }
     } else if (!isStrict) {

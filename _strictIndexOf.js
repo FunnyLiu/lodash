@@ -8,6 +8,7 @@
  * @param {number} fromIndex The index to search from.
  * @returns {number} Returns the index of the matched value, else `-1`.
  */
+// 遍历判断索引，通过===
 function strictIndexOf(array, value, fromIndex) {
   var index = fromIndex - 1,
       length = array.length;

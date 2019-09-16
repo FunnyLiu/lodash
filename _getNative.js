@@ -10,6 +10,7 @@ var baseIsNative = require('./_baseIsNative'),
  * @returns {*} Returns the function if it's native, else `undefined`.
  */
 function getNative(object, key) {
+  //获取value，并判断是否是自身而不是标记的
   var value = getValue(object, key);
   return baseIsNative(value) ? value : undefined;
 }

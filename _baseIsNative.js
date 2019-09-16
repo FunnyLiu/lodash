@@ -37,9 +37,11 @@ var reIsNative = RegExp('^' +
  *  else `false`.
  */
 function baseIsNative(value) {
+  //如果发现有标记或者不是函数，false
   if (!isObject(value) || isMasked(value)) {
     return false;
   }
+  //对源码进行正则判断
   var pattern = isFunction(value) ? reIsNative : reIsHostCtor;
   return pattern.test(toSource(value));
 }

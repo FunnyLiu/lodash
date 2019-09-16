@@ -6,6 +6,7 @@
  * @param {Array} [array=[]] The array to copy values to.
  * @returns {Array} Returns `array`.
  */
+// 拷贝数组
 function copyArray(source, array) {
   var index = -1,
       length = source.length;

@@ -27,9 +27,10 @@ var toFinite = require('./toFinite');
  * // => 3
  */
 function toInteger(value) {
+  //将数字先转为有限数字
   var result = toFinite(value),
       remainder = result % 1;
-
+  // 化为整数
   return result === result ? (remainder ? result - remainder : result) : 0;
 }
 

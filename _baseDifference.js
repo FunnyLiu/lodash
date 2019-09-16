@@ -21,6 +21,7 @@ var LARGE_ARRAY_SIZE = 200;
  */
 function baseDifference(array, values, iteratee, comparator) {
   var index = -1,
+      // 普通情况通过arrayIncludes作为数组内存在值的判断条件
       includes = arrayIncludes,
       isCommon = true,
       length = array.length,
@@ -30,16 +31,22 @@ function baseDifference(array, values, iteratee, comparator) {
   if (!length) {
     return result;
   }
+  //如果有自定义iteratee
   if (iteratee) {
+    //baseUnary将函数闭包
+    //通过iteratee遍历
     values = arrayMap(values, baseUnary(iteratee));
   }
   if (comparator) {
+    //自定义comparator来判断是否内存值条件
     includes = arrayIncludesWith;
     isCommon = false;
   }
   else if (values.length >= LARGE_ARRAY_SIZE) {
+    //如果数组很大，则走cache
     includes = cacheHas;
     isCommon = false;
+    //设置cache
     values = new SetCache(values);
   }
   outer:
@@ -55,6 +62,7 @@ function baseDifference(array, values, iteratee, comparator) {
           continue outer;
         }
       }
+      // 不相等则push到result
       result.push(value);
     }
     else if (!includes(values, computed, comparator)) {

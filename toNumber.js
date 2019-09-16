@@ -2,6 +2,7 @@ var isObject = require('./isObject'),
     isSymbol = require('./isSymbol');
 
 /** Used as references for various `Number` constants. */
+// 通过0/0来模拟NaN
 var NAN = 0 / 0;
 
 /** Used to match leading and trailing whitespace. */
@@ -43,9 +44,11 @@ var freeParseInt = parseInt;
  * // => 3.2
  */
 function toNumber(value) {
+  //数字类型直接返回
   if (typeof value == 'number') {
     return value;
   }
+  //如果是Symbol，返回NaN
   if (isSymbol(value)) {
     return NAN;
   }
@@ -57,6 +60,7 @@ function toNumber(value) {
     return value === 0 ? value : +value;
   }
   value = value.replace(reTrim, '');
+  //兼容多进制
   var isBinary = reIsBinary.test(value);
   return (isBinary || reIsOctal.test(value))
     ? freeParseInt(value.slice(2), isBinary ? 2 : 8)

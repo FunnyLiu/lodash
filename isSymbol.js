@@ -21,7 +21,9 @@ var symbolTag = '[object Symbol]';
  * _.isSymbol('abc');
  * // => false
  */
+// 判断是否是Symbol类型
 function isSymbol(value) {
+  //兼容的考虑，两者取其一
   return typeof value == 'symbol' ||
     (isObjectLike(value) && baseGetTag(value) == symbolTag);
 }
