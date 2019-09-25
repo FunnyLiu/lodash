@@ -132,7 +132,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _baseSortBy.js
 ├── _baseSortedIndex.js
 ├── _baseSortedIndexBy.js
-├── _baseSortedUniq.js
+├── _baseSortedUniq.js - 通过判断上一个和当前是否相等，相等则不加入返回列表，来去重有序数组
 ├── _baseSum.js
 ├── _baseTimes.js
 ├── _baseToNumber.js
@@ -191,7 +191,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _createRange.js
 ├── _createRecurry.js
 ├── _createRelationalOperation.js
-├── _createRound.js
+├── _createRound.js - 递归使用Math.round，从而兼容小数的四舍五入取整情况
 ├── _createSet.js
 ├── _createToPairs.js
 ├── _createWrap.js
@@ -542,7 +542,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── rest.js
 ├── result.js
 ├── reverse.js
-├── round.js
+├── round.js - 基于_createRound.js完成type为'round'的计算
 ├── sample.js
 ├── sampleSize.js
 ├── seq.js
@@ -560,7 +560,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── sortedLastIndex.js
 ├── sortedLastIndexBy.js
 ├── sortedLastIndexOf.js
-├── sortedUniq.js
+├── sortedUniq.js - 调用_baseSortedUniq.js 来去重已排序数组
 ├── sortedUniqBy.js
 ├── split.js
 ├── spread.js
@@ -611,7 +611,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── union.js
 ├── unionBy.js
 ├── unionWith.js
-├── uniq.js
+├── uniq.js - 基于_baseUniq对数组去重
 ├── uniqBy.js
 ├── uniqWith.js
 ├── uniqueId.js
