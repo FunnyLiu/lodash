@@ -191,7 +191,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _createRange.js
 ├── _createRecurry.js
 ├── _createRelationalOperation.js
-├── _createRound.js - 递归使用Math.round，从而兼容小数的四舍五入取整情况
+├── _createRound.js - type为外界传入，递归使用Math[type]，从而兼容小数的情况
 ├── _createSet.js
 ├── _createToPairs.js
 ├── _createWrap.js
@@ -542,7 +542,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── rest.js
 ├── result.js
 ├── reverse.js
-├── round.js - 基于_createRound.js完成type为'round'的计算
+├── round.js - 基于_createRound.js完成type为'round'的计算，基于Math.round递归处理小数
 ├── sample.js
 ├── sampleSize.js
 ├── seq.js
