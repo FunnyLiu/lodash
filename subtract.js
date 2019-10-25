@@ -14,7 +14,9 @@ var createMathOperation = require('./_createMathOperation');
  *
  * _.subtract(6, 4);
  * // => 2
+ * 
  */
+//调用_createMathOperation，回调为简单的-运算。
 var subtract = createMathOperation(function(minuend, subtrahend) {
   return minuend - subtrahend;
 }, 0);

@@ -15,6 +15,7 @@ var createMathOperation = require('./_createMathOperation');
  * _.multiply(6, 4);
  * // => 24
  */
+//调用_createMathOperation，回调为简单的*运算。
 var multiply = createMathOperation(function(multiplier, multiplicand) {
   return multiplier * multiplicand;
 }, 1);

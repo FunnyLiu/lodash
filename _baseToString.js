@@ -24,12 +24,15 @@ function baseToString(value) {
     return value;
   }
   if (isArray(value)) {
+    // 如果是数组则遍历挨个递归转成字符串
     // Recursively convert values (susceptible to call stack limits).
     return arrayMap(value, baseToString) + '';
   }
+  // 兼容symbol类型
   if (isSymbol(value)) {
     return symbolToString ? symbolToString.call(value) : '';
   }
+  // 通过+''的方式转字符串
   var result = (value + '');
   return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
 }

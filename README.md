@@ -2,7 +2,7 @@
 
 The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.org/) modules.
 
-# 源码解析
+# 源码分析
 
 ## 文件结构
 
@@ -135,9 +135,9 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _baseSortedUniq.js - 通过判断上一个和当前是否相等，相等则不加入返回列表，来去重有序数组
 ├── _baseSum.js
 ├── _baseTimes.js
-├── _baseToNumber.js
+├── _baseToNumber.js - 转成数字类型，通过+value。
 ├── _baseToPairs.js
-├── _baseToString.js
+├── _baseToString.js - 转成字符串类型，通过+''的方式。
 ├── _baseUnary.js - 对一个函数进行闭包处理。将传入的函数，通过函数返回出去
 ├── _baseUniq.js
 ├── _baseUnset.js
@@ -184,7 +184,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _createFlow.js
 ├── _createHybrid.js
 ├── _createInverter.js
-├── _createMathOperation.js
+├── _createMathOperation.js - 数学运算参数只要有字符串类型，则都转成字符串，调用回调的运算方法。
 ├── _createOver.js
 ├── _createPadding.js
 ├── _createPartial.js
@@ -307,7 +307,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _unicodeWords.js
 ├── _updateWrapDetails.js
 ├── _wrapperClone.js
-├── add.js
+├── add.js - 调用_createMathOperation，回调为简单的+运算。
 ├── after.js
 ├── array.js
 ├── ary.js
@@ -357,7 +357,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── difference.js
 ├── differenceBy.js
 ├── differenceWith.js
-├── divide.js
+├── divide.js - 调用_createMathOperation，回调为简单的/运算。
 ├── drop.js
 ├── dropRight.js
 ├── dropRightWhile.js
@@ -494,7 +494,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── min.js
 ├── minBy.js
 ├── mixin.js
-├── multiply.js
+├── multiply.js - 调用_createMathOperation，回调为简单的*运算。
 ├── negate.js
 ├── next.js
 ├── noop.js
@@ -572,7 +572,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── stubObject.js
 ├── stubString.js
 ├── stubTrue.js
-├── subtract.js
+├── subtract.js - 调用_createMathOperation，回调为简单的-运算。
 ├── sum.js
 ├── sumBy.js
 ├── tail.js

@@ -22,13 +22,16 @@ function createMathOperation(operator, defaultValue) {
       if (result === undefined) {
         return other;
       }
+      // 如果数学运算参数只要有字符串类型，则都转成字符串
       if (typeof value == 'string' || typeof other == 'string') {
         value = baseToString(value);
         other = baseToString(other);
       } else {
+        // 否则有数字类型就都转为数字来处理
         value = baseToNumber(value);
         other = baseToNumber(other);
       }
+      // 执行传入的回调处理函数
       result = operator(value, other);
     }
     return result;

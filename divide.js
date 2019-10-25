@@ -15,6 +15,7 @@ var createMathOperation = require('./_createMathOperation');
  * _.divide(6, 4);
  * // => 1.5
  */
+// 调用_createMathOperation，回调为简单的/运算。
 var divide = createMathOperation(function(dividend, divisor) {
   return dividend / divisor;
 }, 1);

@@ -11,6 +11,7 @@ var NAN = 0 / 0;
  * @param {*} value The value to process.
  * @returns {number} Returns the number.
  */
+// 将字符串转数字
 function baseToNumber(value) {
   if (typeof value == 'number') {
     return value;
