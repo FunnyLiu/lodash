@@ -14,6 +14,7 @@
  * console.log(_.identity(object) === object);
  * // => true
  */
+// 返回第一次参数
 function identity(value) {
   return value;
 }

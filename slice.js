@@ -1,5 +1,5 @@
 var baseSlice = require('./_baseSlice'),
-    isIterateeCall = require('./_isIterateeCall'),
+    isIterateeCall = require('./_isIterateeCall'),// 判断是否是迭代器
     toInteger = require('./toInteger');
 
 /**
@@ -19,6 +19,7 @@ var baseSlice = require('./_baseSlice'),
  * @returns {Array} Returns the slice of `array`.
  */
 function slice(array, start, end) {
+  // 安全拿到数组长度
   var length = array == null ? 0 : array.length;
   if (!length) {
     return [];

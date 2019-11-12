@@ -20,6 +20,7 @@ var baseCreate = (function() {
     if (objectCreate) {
       return objectCreate(proto);
     }
+    //兼容Object.create
     object.prototype = proto;
     var result = new object;
     object.prototype = undefined;

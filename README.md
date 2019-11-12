@@ -11,9 +11,9 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── README.md
 ├── _DataView.js
 ├── _Hash.js - hash对象的构造函数
-├── _LazyWrapper.js
+├── _LazyWrapper.js - LazyWrapper的构造函数，继承自_baseLodash.js的空函数
 ├── _ListCache.js - ListCache对象的构造函数
-├── _LodashWrapper.js
+├── _LodashWrapper.js - LodashWrapper的构造函数，继承自_baseLodash.js的空函数
 ├── _Map.js - 获取root的Map
 ├── _MapCache.js - 基于hash、map、string的综合cache构造函数
 ├── _Promise.js
@@ -22,8 +22,8 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _Stack.js
 ├── _Symbol.js - root上的Symbol对象
 ├── _Uint8Array.js
-├── _WeakMap.js
-├── _apply.js
+├── _WeakMap.js - 获取_root.js上的WeakMap对象
+├── _apply.js - 给传入函数apply指定作用域
 ├── _arrayAggregator.js
 ├── _arrayEach.js
 ├── _arrayEachRight.js
@@ -55,7 +55,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _baseClone.js
 ├── _baseConforms.js
 ├── _baseConformsTo.js
-├── _baseCreate.js
+├── _baseCreate.js - 暴露创建对象方法，基于Object.create，没有则通过new来兼容。
 ├── _baseDelay.js
 ├── _baseDifference.js - 判断不相等内容，兼容自定义迭代器，比较方法和大数组走缓存
 ├── _baseEach.js
@@ -99,7 +99,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _baseIteratee.js
 ├── _baseKeys.js
 ├── _baseKeysIn.js
-├── _baseLodash.js
+├── _baseLodash.js - 一个空函数，供其他wrapper去继承用
 ├── _baseLt.js
 ├── _baseMap.js
 ├── _baseMatches.js
@@ -124,7 +124,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _baseSample.js
 ├── _baseSampleSize.js
 ├── _baseSet.js
-├── _baseSetData.js
+├── _baseSetData.js - 兼容weakMap，如果没有则基于identity.js，返回第一个值；如果有则使用_metaMap.js设置值。
 ├── _baseSetToString.js
 ├── _baseShuffle.js
 ├── _baseSlice.js - 类似slice，但是数组是入参而不是自调用
@@ -163,22 +163,22 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _cloneTypedArray.js
 ├── _compareAscending.js
 ├── _compareMultiple.js
-├── _composeArgs.js
-├── _composeArgsRight.js
+├── _composeArgs.js - 合并传入的两个数组为一个
+├── _composeArgsRight.js - 合并传入的两个数组为一个，顺序和_composeArgs.js相反
 ├── _copyArray.js - 拷贝数组，通过遍历赋值
 ├── _copyObject.js
 ├── _copySymbols.js
 ├── _copySymbolsIn.js
 ├── _coreJsData.js - 用来获取root.__core-js_shared__
-├── _countHolders.js
+├── _countHolders.js - 计算元素在数组中出现的次数
 ├── _createAggregator.js
 ├── _createAssigner.js
 ├── _createBaseEach.js
 ├── _createBaseFor.js
-├── _createBind.js
+├── _createBind.js - 给传入的函数绑定指定作用域
 ├── _createCaseFirst.js
 ├── _createCompounder.js
-├── _createCtor.js
+├── _createCtor.js - 通过new 创建传入的对象实例。基于_baseCreate.js创建对象
 ├── _createCurry.js
 ├── _createFind.js
 ├── _createFlow.js
@@ -209,8 +209,8 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _freeGlobal.js - 取出node的global
 ├── _getAllKeys.js
 ├── _getAllKeysIn.js
-├── _getData.js
-├── _getFuncName.js
+├── _getData.js - 基于_metaMap.js取指定key。否则返回noop.js的空函数。
+├── _getFuncName.js - 取函数名称，基于func.name
 ├── _getHolder.js
 ├── _getMapData.js - 通过key拿到map实例（hash、map、string）
 ├── _getMatchData.js
@@ -263,7 +263,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _matchesStrictComparable.js
 ├── _memoizeCapped.js
 ├── _mergeData.js
-├── _metaMap.js
+├── _metaMap.js - 返回_WeakMap.js的WeakMap对象
 ├── _nativeCreate.js - 获取原生的Object.create
 ├── _nativeKeys.js
 ├── _nativeKeysIn.js
@@ -275,7 +275,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _reEscape.js
 ├── _reEvaluate.js
 ├── _reInterpolate.js
-├── _realNames.js
+├── _realNames.js - 返回空对象
 ├── _reorder.js
 ├── _replaceHolders.js
 ├── _root.js - 建立引用到freeGlobal
@@ -306,7 +306,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _unicodeToArray.js
 ├── _unicodeWords.js
 ├── _updateWrapDetails.js
-├── _wrapperClone.js
+├── _wrapperClone.js - 深拷贝一个wrapper，针对__actions__使用_copyArray.js拷贝数组，new一个LodashWrapper.js。
 ├── add.js - 调用_createMathOperation，回调为简单的+运算。
 ├── after.js
 ├── array.js
@@ -411,7 +411,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── has.js
 ├── hasIn.js
 ├── head.js
-├── identity.js
+├── identity.js - 返回第一个参数
 ├── inRange.js
 ├── includes.js
 ├── index.js
@@ -486,7 +486,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── maxBy.js
 ├── mean.js
 ├── meanBy.js
-├── memoize.js
+├── memoize.js - 缓存纯函数执行结果，key为函数本身，基于MapCache.js来作为缓存
 ├── merge.js
 ├── mergeWith.js
 ├── method.js
@@ -497,7 +497,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── multiply.js - 调用_createMathOperation，回调为简单的*运算。
 ├── negate.js
 ├── next.js
-├── noop.js
+├── noop.js - 空函数一枚
 ├── now.js
 ├── nth.js
 ├── nthArg.js
@@ -550,7 +550,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── setWith.js
 ├── shuffle.js
 ├── size.js
-├── slice.js
+├── slice.js - 基于_baseSlice.js截断数组并返回新数组
 ├── snakeCase.js
 ├── some.js
 ├── sortBy.js

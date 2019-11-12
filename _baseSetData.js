@@ -9,6 +9,8 @@ var identity = require('./identity'),
  * @param {*} data The metadata.
  * @returns {Function} Returns `func`.
  */
+// 如果不存在weakmap对象，则直接返回identity，取第一个入参为结果
+// 否则使用weakmap设置值
 var baseSetData = !metaMap ? identity : function(func, data) {
   metaMap.set(func, data);
   return func;

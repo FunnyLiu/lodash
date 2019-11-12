@@ -1,4 +1,4 @@
-var MapCache = require('./_MapCache');
+var MapCache = require('./_MapCache');// 基于hash、map、string的综合cache构造函数
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -48,6 +48,7 @@ var FUNC_ERROR_TEXT = 'Expected a function';
  * _.memoize.Cache = WeakMap;
  */
 function memoize(func, resolver) {
+  // 函数类型检查
   if (typeof func != 'function' || (resolver != null && typeof resolver != 'function')) {
     throw new TypeError(FUNC_ERROR_TEXT);
   }
@@ -55,14 +56,16 @@ function memoize(func, resolver) {
     var args = arguments,
         key = resolver ? resolver.apply(this, args) : args[0],
         cache = memoized.cache;
-
+    // 取缓存
     if (cache.has(key)) {
       return cache.get(key);
     }
     var result = func.apply(this, args);
+    // 将执行结果缓存起来
     memoized.cache = cache.set(key, result) || cache;
     return result;
   };
+  // 使用MapCache.js或自定义cache
   memoized.cache = new (memoize.Cache || MapCache);
   return memoized;
 }
