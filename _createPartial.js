@@ -28,7 +28,7 @@ function createPartial(func, bitmask, thisArg, partials) {
         leftLength = partials.length,
         args = Array(leftLength + argsLength),
         fn = (this && this !== root && this instanceof wrapper) ? Ctor : func;
-
+    // 参数数组前增加参数
     while (++leftIndex < leftLength) {
       args[leftIndex] = partials[leftIndex];
     }

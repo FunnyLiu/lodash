@@ -34,6 +34,7 @@ var wrapFlags = [
  * @returns {Array} Returns `details`.
  */
 function updateWrapDetails(details, bitmask) {
+  // 遍历所有规约flag
   arrayEach(wrapFlags, function(pair) {
     var value = '_.' + pair[0];
     if ((bitmask & pair[1]) && !arrayIncludes(details, value)) {

@@ -25,7 +25,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _WeakMap.js - 获取_root.js上的WeakMap对象
 ├── _apply.js - 给传入函数apply指定作用域
 ├── _arrayAggregator.js
-├── _arrayEach.js
+├── _arrayEach.js - 遍历数组，支持自定义迭代器
 ├── _arrayEachRight.js
 ├── _arrayEvery.js
 ├── _arrayFilter.js
@@ -125,7 +125,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _baseSampleSize.js
 ├── _baseSet.js
 ├── _baseSetData.js - 兼容weakMap，如果没有则基于identity.js，返回第一个值；如果有则使用_metaMap.js设置值。
-├── _baseSetToString.js
+├── _baseSetToString.js - 通过_defineProperty.js设置对象描述符的value为传入的字符串
 ├── _baseShuffle.js
 ├── _baseSlice.js - 类似slice，但是数组是入参而不是自调用
 ├── _baseSome.js
@@ -179,27 +179,27 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _createCaseFirst.js
 ├── _createCompounder.js
 ├── _createCtor.js - 通过new 创建传入的对象实例。基于_baseCreate.js创建对象
-├── _createCurry.js
+├── _createCurry.js - 创建curry函数包装器wrapper。
 ├── _createFind.js
 ├── _createFlow.js
-├── _createHybrid.js
+├── _createHybrid.js - 创建一个混合包装器wrapper，通过参数实现curry基于_createRecurry.js，bind this等操作。
 ├── _createInverter.js
 ├── _createMathOperation.js - 数学运算参数只要有字符串类型，则都转成字符串，调用回调的运算方法。
 ├── _createOver.js
 ├── _createPadding.js
-├── _createPartial.js
+├── _createPartial.js - 创建前置参数包装器，在参数前增加参数
 ├── _createRange.js
-├── _createRecurry.js
+├── _createRecurry.js - 创建一个函数，包装func从而继续curry。
 ├── _createRelationalOperation.js
 ├── _createRound.js - type为外界传入，递归使用Math[type]，从而兼容小数的情况
 ├── _createSet.js
 ├── _createToPairs.js
-├── _createWrap.js
+├── _createWrap.js - 通过flag不同，位运算的得出结论创建不同的wrap，基于_createCurry，_createBind，_createHybrid，_createPartial等多个类型。
 ├── _customDefaultsAssignIn.js
 ├── _customDefaultsMerge.js
 ├── _customOmitClone.js
 ├── _deburrLetter.js
-├── _defineProperty.js
+├── _defineProperty.js - 使用Object.defineProperty
 ├── _equalArrays.js
 ├── _equalByTag.js
 ├── _equalObjects.js
@@ -211,7 +211,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _getAllKeysIn.js
 ├── _getData.js - 基于_metaMap.js取指定key。否则返回noop.js的空函数。
 ├── _getFuncName.js - 取函数名称，基于func.name
-├── _getHolder.js
+├── _getHolder.js - 返回传入函数的placeholder属性
 ├── _getMapData.js - 通过key拿到map实例（hash、map、string）
 ├── _getMatchData.js
 ├── _getNative.js - 获取object自身的key
@@ -222,7 +222,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _getTag.js
 ├── _getValue.js - 获取obj的key，规避null
 ├── _getView.js
-├── _getWrapDetails.js
+├── _getWrapDetails.js - 通过正则拿到wrap的详细信息字符串
 ├── _hasPath.js
 ├── _hasUnicode.js
 ├── _hasUnicodeWord.js
@@ -234,13 +234,13 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _initCloneArray.js
 ├── _initCloneByTag.js
 ├── _initCloneObject.js
-├── _insertWrapDetails.js
+├── _insertWrapDetails.js - 通过正则设置wrap的详细信息字符串
 ├── _isFlattenable.js - 判断是否可展开，数组、argument、symbol均可
 ├── _isIndex.js - 判断是否可以用作索引，基于数字范围和正则
 ├── _isIterateeCall.js - 判断是否是迭代器
 ├── _isKey.js
 ├── _isKeyable.js - 判断是否可作为key，typeof为string、number、symbol、boolean均可
-├── _isLaziable.js
+├── _isLaziable.js - 判断是否是基于_LazyWrapper.js的wrap
 ├── _isMaskable.js
 ├── _isMasked.js - 判断函数是否被标记了，标记来自_coreJsData
 ├── _isPrototype.js
@@ -262,7 +262,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _mapToArray.js
 ├── _matchesStrictComparable.js
 ├── _memoizeCapped.js
-├── _mergeData.js
+├── _mergeData.js - 对对象元数据进行merge，元数据则是各种自定义的flag数据
 ├── _metaMap.js - 返回_WeakMap.js的WeakMap对象
 ├── _nativeCreate.js - 获取原生的Object.create
 ├── _nativeKeys.js
@@ -276,18 +276,18 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _reEvaluate.js
 ├── _reInterpolate.js
 ├── _realNames.js - 返回空对象
-├── _reorder.js
-├── _replaceHolders.js
+├── _reorder.js - 根据传入的新索引，对数组重新排序
+├── _replaceHolders.js - 使用传入的指定placeholder，批量替换传入的placeholder数组
 ├── _root.js - 建立引用到freeGlobal
 ├── _safeGet.js
 ├── _setCacheAdd.js
 ├── _setCacheHas.js
-├── _setData.js
+├── _setData.js - 使用_shortOut.js控制冷却地调用_baseSetData.js，设置数据
 ├── _setToArray.js
 ├── _setToPairs.js
-├── _setToString.js
-├── _setWrapToString.js
-├── _shortOut.js
+├── _setToString.js - 通过对象描述符的value设置值，使用_shortOut.js冷却调用_baseSetToString.js
+├── _setWrapToString.js - 给指定wrapper设置内容，如果已有则更新
+├── _shortOut.js - 控制函数调用次数，超过次数则返回函数体，否则返回执行结果
 ├── _shuffleSelf.js
 ├── _stackClear.js
 ├── _stackDelete.js
@@ -305,7 +305,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _unicodeSize.js
 ├── _unicodeToArray.js
 ├── _unicodeWords.js
-├── _updateWrapDetails.js
+├── _updateWrapDetails.js - 更新wrap的details，通过内置flag字符串匹配
 ├── _wrapperClone.js - 深拷贝一个wrapper，针对__actions__使用_copyArray.js拷贝数组，new一个LodashWrapper.js。
 ├── add.js - 调用_createMathOperation，回调为简单的+运算。
 ├── after.js
@@ -339,12 +339,12 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── cond.js
 ├── conforms.js
 ├── conformsTo.js
-├── constant.js
+├── constant.js - 闭包返回存入值
 ├── core.js
 ├── core.min.js
 ├── countBy.js
 ├── create.js
-├── curry.js
+├── curry.js - 通过_createWrap.js传入特殊flag，创建curry函数
 ├── curryRight.js
 ├── date.js
 ├── debounce.js
@@ -588,7 +588,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── times.js
 ├── toArray.js
 ├── toFinite.js - 转有限数字
-├── toInteger.js - 转整数
+├── toInteger.js - 转整数，通过%1
 ├── toIterator.js
 ├── toJSON.js
 ├── toLength.js
@@ -632,7 +632,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── wrap.js
 ├── wrapperAt.js
 ├── wrapperChain.js
-├── wrapperLodash.js
+├── wrapperLodash.js - 对外暴露一个新的_LodashWrapper.js实例，如果是_LodashWrapper类型则基于_wrapperClone.js 拷贝一个返回
 ├── wrapperReverse.js
 ├── wrapperValue.js
 ├── xor.js

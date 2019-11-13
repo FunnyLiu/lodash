@@ -9,6 +9,7 @@ var baseSetToString = require('./_baseSetToString'),
  * @param {Function} string The `toString` result.
  * @returns {Function} Returns `func`.
  */
+// 设置
 var setToString = shortOut(baseSetToString);
 
 module.exports = setToString;

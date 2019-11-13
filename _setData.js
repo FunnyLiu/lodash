@@ -15,6 +15,7 @@ var baseSetData = require('./_baseSetData'),
  * @param {*} data The metadata.
  * @returns {Function} Returns `func`.
  */
+// 考虑调用次数的设置data
 var setData = shortOut(baseSetData);
 
 module.exports = setData;

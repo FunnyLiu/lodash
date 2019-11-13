@@ -33,6 +33,7 @@ function createCurry(func, bitmask, arity) {
 
     length -= holders.length;
     if (length < arity) {
+      // 基于_createRecurry创建下一curry
       return createRecurry(
         func, bitmask, createHybrid, wrapper.placeholder, undefined,
         args, holders, undefined, undefined, arity - length);

@@ -36,6 +36,7 @@ var WRAP_BIND_FLAG = 1,
  * @returns {Function} Returns the new wrapped function.
  */
 function createHybrid(func, bitmask, thisArg, partials, holders, partialsRight, holdersRight, argPos, ary, arity) {
+  // 通过位运算来判断flag
   var isAry = bitmask & WRAP_ARY_FLAG,
       isBind = bitmask & WRAP_BIND_FLAG,
       isBindKey = bitmask & WRAP_BIND_KEY_FLAG,
@@ -55,6 +56,7 @@ function createHybrid(func, bitmask, thisArg, partials, holders, partialsRight, 
       var placeholder = getHolder(wrapper),
           holdersCount = countHolders(args, placeholder);
     }
+    // 对args进行合并
     if (partials) {
       args = composeArgs(args, partials, holders, isCurried);
     }
@@ -64,6 +66,7 @@ function createHybrid(func, bitmask, thisArg, partials, holders, partialsRight, 
     length -= holdersCount;
     if (isCurried && length < arity) {
       var newHolders = replaceHolders(args, placeholder);
+      // 创造curry包装函数
       return createRecurry(
         func, bitmask, createHybrid, wrapper.placeholder, thisArg,
         args, newHolders, argPos, ary, arity - length

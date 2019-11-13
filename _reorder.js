@@ -18,7 +18,7 @@ function reorder(array, indexes) {
   var arrLength = array.length,
       length = nativeMin(indexes.length, arrLength),
       oldArray = copyArray(array);
-
+  // 根据新的索引，重新排序
   while (length--) {
     var index = indexes[length];
     array[length] = isIndex(index, arrLength) ? oldArray[index] : undefined;

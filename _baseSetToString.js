@@ -10,6 +10,7 @@ var constant = require('./constant'),
  * @param {Function} string The `toString` result.
  * @returns {Function} Returns `func`.
  */
+// 如果存在Object.defineProperty，设置值value
 var baseSetToString = !defineProperty ? identity : function(func, string) {
   return defineProperty(func, 'toString', {
     'configurable': true,

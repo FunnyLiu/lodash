@@ -44,12 +44,14 @@ function createRecurry(func, bitmask, wrapFunc, placeholder, thisArg, partials, 
     func, bitmask, thisArg, newPartials, newHolders, newPartialsRight,
     newHoldersRight, argPos, ary, arity
   ];
-
+  // wrap包装它
   var result = wrapFunc.apply(undefined, newData);
+  // 如果是lazyWrapper，则直接setData
   if (isLaziable(func)) {
     setData(result, newData);
   }
   result.placeholder = placeholder;
+  // 写入bitmask到该wrap
   return setWrapToString(result, func, bitmask);
 }
 
