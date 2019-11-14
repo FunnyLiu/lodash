@@ -308,7 +308,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _updateWrapDetails.js - 更新wrap的details，通过内置flag字符串匹配
 ├── _wrapperClone.js - 深拷贝一个wrapper，针对__actions__使用_copyArray.js拷贝数组，new一个LodashWrapper.js。
 ├── add.js - 调用_createMathOperation，回调为简单的+运算。
-├── after.js
+├── after.js - 函数执行后执行传入的函数
 ├── array.js
 ├── ary.js
 ├── assign.js
@@ -317,7 +317,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── assignWith.js
 ├── at.js
 ├── attempt.js
-├── before.js
+├── before.js - 函数执行前拦截并执行传入的函数
 ├── bind.js
 ├── bindAll.js
 ├── bindKey.js

@@ -20,6 +20,7 @@ var FUNC_ERROR_TEXT = 'Expected a function';
  * jQuery(element).on('click', _.before(5, addContactToList));
  * // => Allows adding up to 4 contacts to the list.
  */
+// 通过apply拦截函数
 function before(n, func) {
   var result;
   if (typeof func != 'function') {
