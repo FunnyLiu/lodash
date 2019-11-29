@@ -120,7 +120,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _baseRange.js
 ├── _baseReduce.js
 ├── _baseRepeat.js
-├── _baseRest.js
+├── _baseRest.js - 将函数的内容传给增加了剩余参数的函数本体，再暴露函数。基于_overRest.js改造函数对象
 ├── _baseSample.js
 ├── _baseSampleSize.js
 ├── _baseSet.js
@@ -270,7 +270,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _nodeUtil.js
 ├── _objectToString.js - 包装Object.toString
 ├── _overArg.js
-├── _overRest.js
+├── _overRest.js - 将剩余参数赋给传入的func，通过闭包来保证函数体至内存
 ├── _parent.js
 ├── _reEscape.js
 ├── _reEvaluate.js
@@ -516,7 +516,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── padEnd.js
 ├── padStart.js
 ├── parseInt.js
-├── partial.js
+├── partial.js - 基于_baseRest.js来创建偏函数
 ├── partialRight.js
 ├── partition.js
 ├── pick.js

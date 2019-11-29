@@ -13,6 +13,7 @@ var nativeMax = Math.max;
  * @returns {Function} Returns the new function.
  */
 function overRest(func, start, transform) {
+  // 剩余参数起始位置
   start = nativeMax(start === undefined ? (func.length - 1) : start, 0);
   return function() {
     var args = arguments,
@@ -29,6 +30,7 @@ function overRest(func, start, transform) {
       otherArgs[index] = args[index];
     }
     otherArgs[start] = transform(array);
+    //  apply绑定参数及作用域给func
     return apply(func, this, otherArgs);
   };
 }

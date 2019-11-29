@@ -11,6 +11,7 @@ var identity = require('./identity'),
  * @returns {Function} Returns the new function.
  */
 function baseRest(func, start) {
+  // 将加入剩余参数的函数对象，赋予函数内容作为value
   return setToString(overRest(func, start, identity), func + '');
 }
 

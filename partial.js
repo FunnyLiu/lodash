@@ -39,8 +39,11 @@ var WRAP_PARTIAL_FLAG = 32;
  * greetFred('hi');
  * // => 'hi fred'
  */
+//baseRest将函数的内容传给增加了剩余参数的函数本体，再暴露函数
 var partial = baseRest(function(func, partials) {
+  // 替换函数的placeholder属性
   var holders = replaceHolders(partials, getHolder(partial));
+  // 通过32创建一个partial的wrapper
   return createWrap(func, WRAP_PARTIAL_FLAG, undefined, partials, holders);
 });
 
