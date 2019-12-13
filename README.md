@@ -116,7 +116,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _basePropertyOf.js
 ├── _basePullAll.js
 ├── _basePullAt.js
-├── _baseRandom.js
+├── _baseRandom.js  - 通过入参生成随机数
 ├── _baseRange.js
 ├── _baseReduce.js
 ├── _baseRepeat.js
@@ -142,7 +142,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _baseUniq.js
 ├── _baseUnset.js
 ├── _baseUpdate.js
-├── _baseValues.js
+├── _baseValues.js - 返回Object中多个key的值组成的数组，通过_arrayMap来遍历
 ├── _baseWhile.js
 ├── _baseWrapperValue.js
 ├── _baseXor.js
@@ -288,7 +288,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── _setToString.js - 通过对象描述符的value设置值，使用_shortOut.js冷却调用_baseSetToString.js
 ├── _setWrapToString.js - 给指定wrapper设置内容，如果已有则更新
 ├── _shortOut.js - 控制函数调用次数，超过次数则返回函数体，否则返回执行结果
-├── _shuffleSelf.js
+├── _shuffleSelf.js - 乱序和核心方法，通过_baseRandom.js传入数组的长度完成
 ├── _stackClear.js
 ├── _stackDelete.js
 ├── _stackGet.js
@@ -465,7 +465,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── join.js
 ├── kebabCase.js
 ├── keyBy.js
-├── keys.js
+├── keys.js - 获取字符串、对象、数组等等的key列表
 ├── keysIn.js
 ├── lang.js
 ├── last.js
@@ -548,7 +548,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── seq.js
 ├── set.js
 ├── setWith.js
-├── shuffle.js
+├── shuffle.js - 数组乱序，底层基于shuffleSelf.js完成
 ├── size.js
 ├── slice.js - 基于_baseSlice.js截断数组并返回新数组
 ├── snakeCase.js
@@ -625,7 +625,7 @@ The [Lodash](https://lodash.com/) library exported as [Node.js](https://nodejs.o
 ├── util.js
 ├── value.js
 ├── valueOf.js
-├── values.js
+├── values.js - 拿到字符串、对象的values，通过keys.js得到key，通过_baseValues.js得到值
 ├── valuesIn.js
 ├── without.js
 ├── words.js
